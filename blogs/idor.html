@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Understanding IDOR | Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="cursor-glow"></div>
+
+  <header>
+    <div class="logo">frosty_ken</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="index.html">Blog</a>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <div class="container">
+      <div class="blog-single" style="display: block;">
+        <h1>Understanding IDOR in Modern Web Apps</h1>
+        <div class="blog-single-meta">
+          <span><i class="far fa-calendar"></i> June 15, 2024</span>
+          <span><i class="fas fa-tag"></i> Web Security, Vulnerability Research</span>
+        </div>
+        <div class="blog-single-content">
+          <p>IDOR remains one of the most common authorization flaws in web applications today. This post explores real-world examples, exploitation techniques using Burp Suite, and defensive patterns like indirect reference maps and proper session validation.</p>
+          <p>When testing web applications, I always start by mapping all endpoints that use identifiers (IDs) to reference objects. These could be numeric IDs like <code>user_id=123</code> or string-based identifiers like UUIDs. The key is to verify if the application properly checks if the authenticated user has permission to access the referenced object.</p>
+          <p>Common exploitation techniques include:</p>
+          <ul>
+            <li>Incrementing/decrementing numeric IDs</li>
+            <li>Guessing UUIDs or other predictable identifiers</li>
+            <li>Changing parameter names (e.g., from <code>user_id</code> to <code>admin_id</code>)</li>
+            <li>Testing with different HTTP methods</li>
+          </ul>
+          <p>Defensive strategies should include:</p>
+          <ul>
+            <li>Implementing proper access controls on every data access</li>
+            <li>Using indirect reference maps instead of direct object references</li>
+            <li>Logging and monitoring access to sensitive resources</li>
+            <li>Regular security testing with both automated and manual techniques</li>
+          </ul>
+        </div>
+        <a href="index.html" class="back-to-blogs"><i class="fas fa-arrow-left"></i> Back to All Articles</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="index.html">Blog</a>
+      </div>
+      <p class="copyright">© 2025 Pratik Satyal (@frosty_ken). All exploits reserved.</p>
+      <p class="copyright">Built for offensive minds. Deployed on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
